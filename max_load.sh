@@ -1,0 +1,1 @@
+export let LOAD=0,1; while [ true ]; do export let CURRENT_LOAD=$(w|head -1|awk '{print $8}'|awk -F, '{print $1 "," $2 }'); export let LOAD=$(awk -vMAX=$(echo ${LOAD}|tr "," ".") -vCURR=$(echo ${CURRENT_LOAD}|tr "," ".") 'BEGIN{ if( MAX < CURR ) print CURR; else print  MAX }'); echo $LOAD; sleep 1; done
