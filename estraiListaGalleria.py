@@ -52,9 +52,11 @@ for name,fh in listaFile.items():
 
 # salvo conteggi
 for keys, values in conteggi.items():
-	file = open( "conteggi_"+keys, 'w');
-	for galleria, conteggio in values.items():
-		if debug: print "\""+galleria+"\",\""+str(conteggio)+"\"\n";
-		file.write("\""+galleria+"\",\""+str(conteggio)+"\"\n");
-	file.close();
-
+	try:
+		file = open( "conteggi_"+keys, 'w');
+		for galleria, conteggio in values.items():
+			if debug: print "\""+galleria+"\",\""+str(conteggio)+"\"\n";
+			file.write("\""+galleria+"\",\""+str(conteggio)+"\"\n");
+		file.close();
+	except:
+		print(keys+"\n");
